@@ -1,6 +1,4 @@
-// tailwind.config.js
-const { lightColors, darkColors } = require('./src/themes/colors');
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './App.{js,jsx,ts,tsx}',
@@ -8,46 +6,28 @@ module.exports = {
     './src/**/*.{js,jsx,ts,tsx}',
   ],
   presets: [require('nativewind/preset')],
-  darkMode: 'class',                    
   theme: {
     extend: {
       colors: {
-        /* ---------- core brand ---------- */
-        primary:        lightColors.primary,
-        'primary-dark': darkColors.primary,
-
-        secondary:        lightColors.secondary,
-        'secondary-dark': darkColors.secondary,
-
-        /* ---------- neutrals ---------- */
-        background:        lightColors.background,
-        'background-dark': darkColors.background,
-
-        surface:        lightColors.surface,
-        'surface-dark': darkColors.surface,
-
-        'surface-secondary':lightColors.surfaceSecondary,
-        "success-secondary-dark":darkColors.surfaceSecondary,
-
-        text:        lightColors.text,
-        'text-dark': darkColors.text,
-
-        'text-secondary':        lightColors.textSecondary,
-        'text-secondary-dark':   darkColors.textSecondary,
-
-        border:        lightColors.border,
-        'border-dark': darkColors.border,
-
-        /* ---------- semantic state ---------- */
-        danger:        lightColors.danger,
-        'danger-dark': darkColors.danger,
-
-        success:        lightColors.success,
-        'success-dark': darkColors.success,
-
-        warning:        lightColors.warning,
-        'warning-dark': darkColors.warning,
+        primary:        'var(--color-primary)',
+        'primary-text': 'var(--color-primaryText)',
+        secondary:      'var(--color-secondary)',
+        'secondary-text':'var(--color-secondaryText)',
+        background:     'var(--color-background)',
+        surface:        'var(--color-surface)',
+        'surface-secondary': 'var(--color-surface_secondary)',
+        'surface-tertiary':  'var(--color-surface_teritary)',
+        text:           'var(--color-text)',
+        'text-secondary':'var(--color-textSecondary)',
+        'text-third':   'var(--color-text_third)',
+        border:         'var(--color-border)',
+        'border-secondary':'var(--color-border_secondary)',
+        'border-third':'var(--color-border_third)',
+        danger:         'var(--color-danger)',
+        success:        'var(--color-success)',
+        warning:        'var(--color-warning)',
       },
     },
   },
+  plugins: [],
 };

@@ -1,41 +1,39 @@
-
-const lightColors = {
-  primary: '#2563eb',
-  primaryText: '#ffffff',
-  secondary: '#f59e0b',
-  secondaryText: '#000000',
-  background: '#ffffff',
-  surface: 'blue',
-  surfaceSecondary:"#b8e9e3",
-  text: '#0f172a',
-  textSecondary: '#64748b',
-  border: '#e2e8f0',
-  danger: '#dc2626',
-  success: '#16a34a',
-  warning: '#eab308',
+export const orangeThemeColors = {
+  primary:            'tomato',
+  primaryText:        '#ffffff',
+  secondary:          'rgb(247, 157, 140)',
+  secondaryText:      '#000000',
+  background:         'rgb(246, 242, 235)',
+  surface:            '#FFEAD8',
+  surface_secondary:  '#FFEAD8',
+  surface_teritary:   'rgb(227, 245, 235)',
+  text:               'rgb(223, 82, 57)',
+  textSecondary:      '#16a34a',
+  text_third:         'rgb(59, 57, 57)',
+  border:             'rgb(247, 157, 140)',
+  border_secondary:   'rgb(142, 229, 179)',
+  border_third:       'rgb(247, 157, 140)',
+  danger:             '#dc2626',
+  success:            '#16a34a',
+  warning:            '#eab308',
 };
 
-
-const darkColors = {
-  primary: '#3b82f6',
-  primaryText: '#000000',
-  secondary: '#fbbf24',
-  secondaryText: '#000000',
-  background: '#0f172a',
-  surface: '#e9d2b8',
-  surfaceSecondary:"white",
-  text: '#f8fafc',
-  textSecondary: '#94a3b8',
-  border: '#334155',
-  danger: '#f87171',
-  success: '#4ade80',
-  warning: '#facc15',
-};
-
-
-
-
-module.exports = {
-  lightColors,
-  darkColors,
+export const blueThemeColors = {
+  primary:            '#3b82f6',
+  primaryText:        '#ffffff',
+  secondary:          '#60a5fa',
+  secondaryText:      '#000000',
+  background:         '#e0f2fe',
+  surface:            '#dbeafe',
+  surface_secondary:  '#dbeafe',
+  surface_teritary:   '#e0f2fe',
+  text:               '#1e3a8a',
+  textSecondary:      '#2563eb',
+  text_third:         '#334155',
+  border:             '#60a5fa',
+  border_secondary:   '#93c5fd',
+  border_third:       '#60a5fa',
+  danger:             '#ef4444',
+  success:            '#22c55e',
+  warning:            '#facc15',
 };

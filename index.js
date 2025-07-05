@@ -9,6 +9,7 @@ import ThemeManager from './src/components/ThemeManager';
 import App from './src/App';
 
 
+
 // 1. Create store
 const store = configureStore({
   reducer: {

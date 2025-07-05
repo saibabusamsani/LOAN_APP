@@ -1,11 +1,11 @@
 import { MD3DarkTheme } from 'react-native-paper';
-import {darkColors } from './colors';
+import {blueThemeColors } from './colors';
 
 export const darkTheme = {
   ...MD3DarkTheme,
   colors: {
     ...MD3DarkTheme.colors,
-    primary:darkColors.primary,
-    secondary: darkColors.secondary,
+    primary:blueThemeColors.primary,
+    secondary: blueThemeColors.secondary,
   },
 };

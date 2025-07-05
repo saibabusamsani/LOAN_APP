@@ -12,7 +12,8 @@
   "dependencies": {
     "@nozbe/with-observables": "^1.6.0",
     "@react-native-async-storage/async-storage": "^2.2.0",
-    "@react-navigation/drawer": "^7.3.12",
+    "@react-native-masked-view/masked-view": "^0.3.2",
+    "@react-navigation/drawer": "^7.5.2",
     "@react-navigation/elements": "^2.4.2",
     "@react-navigation/material-top-tabs": "^7.2.17",
     "@react-navigation/native": "^7.1.9",
@@ -26,6 +27,7 @@
     "react-native-css-interop": "^0.1.22",
     "react-native-css-transformer": "^2.0.0",
     "react-native-gesture-handler": "^2.25.0",
+    "react-native-linear-gradient": "^2.8.3",
     "react-native-pager-view": "^6.8.1",
     "react-native-paper": "^5.14.5",
     "react-native-reanimated": "^3.18.0",
