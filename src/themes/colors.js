@@ -1,7 +1,7 @@
 export const orangeThemeColors = {
   primary:            'tomato',
   primaryText:        '#ffffff',
-  secondary:          'rgb(247, 157, 140)',
+  secondary:          '#f97316',
   secondaryText:      '#000000',
   background:         'rgb(246, 242, 235)',
   surface:            '#FFEAD8',

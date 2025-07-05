@@ -23,7 +23,7 @@ const HomeHeader = () => {
 
         <IconButton
           icon="menu"
-          iconColor={MD3Colors.error50}
+          iconColor={colors.primary}
           size={35}
           onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
         />
@@ -36,16 +36,16 @@ const HomeHeader = () => {
             />
 
             <View className="flex-row space-x-1 ">
-              <Text className="font-bold text-green-600 text-lg">JEEV</Text>
+              <Text className="font-bold text-text-secondary text-lg">JEEV</Text>
               <Text className="text-text font-bold text-lg">I</Text>
-              <Text className="text-green-600 font-bold text-lg">K NIDDHI</Text>
+              <Text className="text-text-secondary font-bold text-lg">K NIDDHI</Text>
             </View>
 
         </View>
 
         <IconButton
           icon="account-circle-outline"
-          iconColor={MD3Colors.error50}
+          iconColor={colors.primary}
           size={35}
           onPress={() => console.log('Profile Pressed')}
         />

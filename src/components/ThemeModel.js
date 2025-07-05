@@ -5,26 +5,24 @@ import {
   TouchableWithoutFeedback,
   View,
   Text,
-  TouchableOpacity,
+
 } from 'react-native';
 import { Portal, RadioButton, useTheme } from 'react-native-paper';
 import GradientButton from './GradientButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { setThemeColor } from '../store/themeSlice';
+import { useDispatch, useSelector} from 'react-redux';
+import { applyTheme, changeTheme, setThemeColor } from '../store/themeSlice';
 
 const { height } = Dimensions.get('window');
 
 const ThemeModel = ({ visible, onDismiss }) => {
+
+   const themeColor = useSelector(s => s.theme.themeColor);
   const translateY = useRef(new Animated.Value(height)).current;
   const [showModal, setShowModal] = useState(visible);
-  const [value, setValue] = useState('orange');
+  const [value, setValue] = useState(themeColor);
   const {colors}=useTheme();
   const dispatch=useDispatch();
 
-  const themeColor=useSelector(state=>state.theme.themeColor);
-
-  console.log("color",themeColor);
-  
 
   useEffect(() => {
     if (visible) {
@@ -45,13 +43,11 @@ const ThemeModel = ({ visible, onDismiss }) => {
 
   if (!showModal) return null;
 
-  const themeHandle = () => {
-    
-    dispatch(setThemeColor(value));
-    onDismiss();
-  }
-
-  
+ 
+const themeHandle = () => {
+  dispatch(applyTheme(value)); 
+  onDismiss();
+};
 
   return (
     <Portal>
@@ -64,15 +60,15 @@ const ThemeModel = ({ visible, onDismiss }) => {
             >
               <View className='p-4'>
                   <RadioButton.Group onValueChange={(c)=>setValue(c)} value={value}>
-                    <View className="flex-row items-center space-x-6 mb-4">
+                    <View className="flex-row items-center space-x-6 mb-4 gap-5">
                       {/* Orange Option */}
                       <View className="flex-row items-center space-x-2">
                         <RadioButton
                           value="orange"
-                          color={colors.primary}
+                          color={"tomato"}
                           uncheckedColor="#ccc"
                         />
-                        <Text className={`text-base ${value === 'orange' ? 'text-primary font-semibold' : 'text-gray-600'}`}>
+                        <Text className={`text-base ${value === 'orange' ? 'text-orange-600 font-semibold' : 'text-gray-600'}`}>
                           Orange
                         </Text>
                       </View>

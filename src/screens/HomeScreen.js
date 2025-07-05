@@ -10,7 +10,6 @@ const HomeScreen = () => {
 const navigation=useNavigation();
 const { colors } = useTheme(); 
 
-console.log("all colots : ",colors)
 const items = [
   {
     type: "Apply Loans",
@@ -42,6 +41,13 @@ const handle=(id)=>{
   {
     case 0:
       route="LoanApply";
+      break;
+    case 1:
+      route="AppliedLoansList";
+      break;
+    
+    case 2:
+      route="LoanSummary";
       break;
      default:              
       route = 'LoanApply';

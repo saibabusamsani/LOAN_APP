@@ -24,8 +24,9 @@ const LoanApply = () => {
   return (
     <SafeAreaView edges={[]} >
           <ScrollView keyboardShouldPersistTaps="handled">
-          <View className='items-center'>
-              <View className='flex-1 bg-surface_teritary justify-center items-center gap-2 mt-10 p-3 rounded-md ' style={layoutStyle.form}>
+          <View className='items-center mt-10 gap-3'>
+              <Text className='text-text font-extrabold tracking-widest  underline decoration-primary'>Loan Registration</Text>
+              <View className='flex-1 bg-surface-tertiary justify-center items-center gap-2 p-3 rounded-md ' style={layoutStyle.form}>
 
               {/* NAME */}
               <View className="flex-row gap-5 justify-between items-center  w-full">
