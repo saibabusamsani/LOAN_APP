@@ -26,11 +26,11 @@ const LoanApply = () => {
           <ScrollView keyboardShouldPersistTaps="handled">
           <View className='items-center mt-10 gap-3'>
               <Text className='text-text font-extrabold tracking-widest  underline decoration-primary'>Loan Registration</Text>
-              <View className='flex-1 bg-surface-tertiary justify-center items-center gap-2 p-3 rounded-md ' style={layoutStyle.form}>
+              <View className='flex-1 bg-surface justify-center items-center gap-2 p-3 rounded-md ' style={layoutStyle.form}>
 
               {/* NAME */}
               <View className="flex-row gap-5 justify-between items-center  w-full">
-                  <Text className="text-text font-medium text-sm">NAME</Text>
+                  <Text className="text-text font-inter-medium text-sm">NAME</Text>
                   <TextInput
                     placeholder="Ex: Sai"
                     mode="outlined"
@@ -42,8 +42,8 @@ const LoanApply = () => {
               </View>
 
               {/* REFERENCE ID */}
-              <View className='flex-row items-center gap-5  w-full'>
-                  <Text className="text-text font-medium text-sm">REFERENCE ID</Text>
+              <View className='flex-row items-center gap-5  w-full justify-between'>
+                  <Text className="text-text font-inter-medium text-sm">REFERENCE ID</Text>
                       <TextInput
                           placeholder="Ex: 4202"
                           mode="outlined"
@@ -54,7 +54,7 @@ const LoanApply = () => {
               </View>
               {/*SHG ID*/}
               <View className='flex-row items-center gap-5  w-full justify-between'>
-                    <Text className="text-text font-medium text-sm">SHG ID</Text>
+                    <Text className="text-text font-inter-medium text-sm">SHG ID</Text>
                         <TextInput
                             placeholder="Ex: 4344"
                             mode="outlined"
@@ -66,7 +66,7 @@ const LoanApply = () => {
 
               {/*PURPOSE */}
               <View className='flex-row items-center gap-5  w-full justify-between'>
-                    <Text className="text-text font-medium text-sm">Purpose</Text>
+                    <Text className="text-text font-inter-medium text-sm">Purpose</Text>
                       <TextInput
                           placeholder="Ex: Hello world"
                           mode="outlined"
@@ -79,7 +79,7 @@ const LoanApply = () => {
               {/* MOBILE NUMBER */}
               <View className='flex-row items-center gap-5  w-full justify-between'>
 
-                  <Text className="text-text font-medium text-sm">Mobile No.</Text>
+                  <Text className="text-text font-inter-medium text-sm">Mobile No.</Text>
                       <TextInput
                           placeholder="Ex: 876544455"
                           mode="outlined"
@@ -92,7 +92,7 @@ const LoanApply = () => {
               {/* AMOUNT */}
               <View className='flex-row items-center gap-5  w-full justify-between'>
 
-                  <Text className="text-text font-medium text-sm">AMOUNT</Text>
+                  <Text className="text-text font-inter-medium text-sm">AMOUNT</Text>
                       <TextInput
                           placeholder="Ex: 25,000"
                           mode="outlined"

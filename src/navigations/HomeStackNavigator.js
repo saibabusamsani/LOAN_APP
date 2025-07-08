@@ -2,18 +2,19 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import LoanApply from '../screens/LoanApply';
-import AppliedLoansList from '../screens/AppliedLoansList';
-import LoanSummary from '../screens/LoanSummary';
+import LoanSummaryNavigator from './LoanSummaryNavigator';
+import AppliedLoanListNavigator from './AppliedLoanListNavigator';
 
 const Stack = createNativeStackNavigator();
 
 export default function HomeStackNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+      <Stack.Screen name="HomeScreen" component={HomeScreen}  />
       <Stack.Screen name="LoanApply" component={LoanApply} />
-      <Stack.Screen name="AppliedLoansList" component={AppliedLoansList} />
-      <Stack.Screen name="LoanSummary" component={LoanSummary} />
+      <Stack.Screen name="AppliedLoansListNavigator" component={AppliedLoanListNavigator} />
+      <Stack.Screen name="LoanSummary" component={LoanSummaryNavigator} />
     </Stack.Navigator>
   );
 }

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { platformSelect } = require("nativewind/theme");
 module.exports = {
   content: [
     './App.{js,jsx,ts,tsx}',
@@ -8,6 +9,23 @@ module.exports = {
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
+      fontFamily:{
+       inter: ["InterTight-Regular"],
+        'inter-bold': ["InterTight-Bold"],
+        'inter-medium': ["InterTight-Medium"],
+        'inter-light': ["InterTight-Light"],
+        'inter-thin': ["InterTight-Thin"],
+        'inter-semibold': ["InterTight-SemiBold"],
+        'inter-extrabold': ["InterTight-ExtraBold"],
+        'inter-black': ["InterTight-Black"],
+        'inter-italic': ["InterTight-Italic"],
+        'inter-bolditalic': ["InterTight-BoldItalic"],
+        system: platformSelect({
+          ios: 'Helvetica',
+          android: 'sans-serif',
+          default: 'ui-sans-serif',
+        })
+      },
       colors: {
         primary:        'var(--color-primary)',
         'primary-text': 'var(--color-primaryText)',

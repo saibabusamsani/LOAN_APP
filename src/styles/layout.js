@@ -13,7 +13,8 @@ export const layoutStyle=StyleSheet.create({
     input:{
         height:h(4.5),
         width:w(62),
-        fontSize:s(1.5)
+        fontSize:s(1.5),
+        background:"white"
     },
     form:{
         width:w(95)

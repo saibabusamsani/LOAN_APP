@@ -12,6 +12,7 @@ export const InputTheme = () => {
       ...colors,
       outline: colors.border_secondary,
       primary: colors.border, 
+      background:"white"
     },
   };
 };

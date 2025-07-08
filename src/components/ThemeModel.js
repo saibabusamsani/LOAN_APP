@@ -5,6 +5,7 @@ import {
   TouchableWithoutFeedback,
   View,
   Text,
+  Image,
 
 } from 'react-native';
 import { Portal, RadioButton, useTheme } from 'react-native-paper';
@@ -58,36 +59,47 @@ const themeHandle = () => {
               className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-3"
               style={{ transform: [{ translateY }] }}
             >
-              <View className='p-4'>
-                  <RadioButton.Group onValueChange={(c)=>setValue(c)} value={value}>
-                    <View className="flex-row items-center space-x-6 mb-4 gap-5">
-                      {/* Orange Option */}
-                      <View className="flex-row items-center space-x-2">
-                        <RadioButton
-                          value="orange"
-                          color={"tomato"}
-                          uncheckedColor="#ccc"
-                        />
-                        <Text className={`text-base ${value === 'orange' ? 'text-orange-600 font-semibold' : 'text-gray-600'}`}>
-                          Orange
-                        </Text>
-                      </View>
-
-                      {/* Blue Option */}
-                      <View className="flex-row items-center space-x-2">
-                        <RadioButton
-                          value="blue"
-                          color="blue"
-                          uncheckedColor="#ccc"
-                        />
-                        <Text className={`text-base ${value === 'blue' ? 'text-blue-500 font-semibold' : 'text-gray-600'}`}>
-                          Blue
-                        </Text>
-                      </View>
+              <View className='p-4  gap-2'>
+                <View className="w-[60%] h-40 rounded-lg overflow-hidden">
+                  <Image
+                    source={
+                      value === 'orange'
+                        ? require('../assets/orangeTheme.png')
+                        : require('../assets/purpleTheme.png')
+                    }
+                    resizeMode="contain" // or 'cover'
+                    className="w-full h-full"
+                  />
+                </View>
+                <RadioButton.Group onValueChange={(c) => setValue(c)} value={value}>
+                  <View className="flex-row items-center space-x-6 mb-4 gap-5">
+                    {/* Orange Option */}
+                    <View className="flex-row items-center space-x-2">
+                      <RadioButton
+                        value="orange"
+                        color={"tomato"}
+                        uncheckedColor="#ccc"
+                      />
+                      <Text className={`text-base ${value === 'orange' ? 'text-orange-600 font-semibold' : 'text-gray-600'}`}>
+                        Orange
+                      </Text>
                     </View>
-                  </RadioButton.Group>
 
-                 <GradientButton title="Save Theme" onPress={themeHandle}/>
+                    {/* Blue Option */}
+                    <View className="flex-row items-center space-x-2">
+                      <RadioButton
+                        value="blue"
+                        color="blue"
+                        uncheckedColor="#ccc"
+                      />
+                      <Text className={`text-base ${value === 'blue' ? 'text-blue-500 font-semibold' : 'text-gray-600'}`}>
+                        Blue
+                      </Text>
+                    </View>
+                  </View>
+                </RadioButton.Group>
+
+                <GradientButton title="Save Theme" onPress={themeHandle} />
 
               </View>
             </Animated.View>
@@ -99,3 +111,4 @@ const themeHandle = () => {
 };
 
 export default ThemeModel;
+

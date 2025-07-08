@@ -1,39 +1,51 @@
 export const orangeThemeColors = {
-  primary:            'tomato',
-  primaryText:        '#ffffff',
-  secondary:          '#f97316',
+  primary:            '#FF6347',
+  primaryText:        '#FFFFFF',
+  secondary:          '#F97316',
   secondaryText:      '#000000',
-  background:         'rgb(246, 242, 235)',
+
+  background:         '#FFF7ED',
   surface:            '#FFEAD8',
-  surface_secondary:  '#FFEAD8',
-  surface_teritary:   'rgb(227, 245, 235)',
-  text:               'rgb(223, 82, 57)',
-  textSecondary:      '#16a34a',
-  text_third:         'rgb(59, 57, 57)',
-  border:             'rgb(247, 157, 140)',
-  border_secondary:   'rgb(142, 229, 179)',
-  border_third:       'rgb(247, 157, 140)',
-  danger:             '#dc2626',
-  success:            '#16a34a',
-  warning:            '#eab308',
+  surface_secondary:  '#FFF3E0',
+  surface_teritary:   '#ECFDF5',
+
+  text:               '#C2410C',
+  textSecondary:      '#15803D',
+  text_third:         '#4B5563',
+
+  border:             '#FDBA74',
+  border_secondary:   '#BBF7D0',
+  border_third:       '#FCD34D',
+
+  danger:             '#DC2626',
+  success:            '#16A34A',
+  warning:            '#F59E0B',
 };
 
+
+
+
 export const blueThemeColors = {
-  primary:            '#3b82f6',
-  primaryText:        '#ffffff',
-  secondary:          '#60a5fa',
+  primary:            '#7B1FA2',
+  primaryText:        '#FFFFFF',
+  secondary:          '#9575CD',
   secondaryText:      '#000000',
-  background:         '#e0f2fe',
-  surface:            '#dbeafe',
-  surface_secondary:  '#dbeafe',
-  surface_teritary:   '#e0f2fe',
-  text:               '#1e3a8a',
-  textSecondary:      '#2563eb',
-  text_third:         '#334155',
-  border:             '#60a5fa',
-  border_secondary:   '#93c5fd',
-  border_third:       '#60a5fa',
-  danger:             '#ef4444',
-  success:            '#22c55e',
-  warning:            '#facc15',
+
+  background:         '#F3E5F5',
+  surface:            '#EDE7F6',
+  surface_secondary:  '#E1BEE7',
+  surface_teritary:   '#F5F5F5',
+
+  text:               '#4A148C',
+  textSecondary:      '#7C3AED',
+  text_third:         '#4B5563',
+
+  border:             '#B39DDB',
+  border_secondary:   '#CE93D8',
+  border_third:       '#D1C4E9',
+
+  danger:             '#EF4444',
+  success:            '#22C55E',
+  warning:            '#FACC15',
 };
+

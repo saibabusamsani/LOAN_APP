@@ -14,24 +14,14 @@ const items = [
   {
     type: "Apply Loans",
     icon: require("../assets/signing.png"),
-    bubbleColor:"bg-green-50",
-    textColor:"text-green-400",
-    border:"border-green-300"
-
   },
   {
     type: "Applied Loans",
     icon: require("../assets/completed-task.png"),
-     bubbleColor:"bg-red-50",
-     textColor:"text-red-400",
-      border:"border-red-300"
   },
   {
     type: "Loans Summary",
     icon: require("../assets/agreement.png"),
-     bubbleColor:"bg-sky-50",
-     textColor:"text-sky-400",
-      border:"border-sky-300"
   },
 ];
 
@@ -43,7 +33,7 @@ const handle=(id)=>{
       route="LoanApply";
       break;
     case 1:
-      route="AppliedLoansList";
+      route="AppliedLoansListNavigator";
       break;
     
     case 2:
@@ -74,19 +64,16 @@ useLayoutEffect(() => {
                 items.map((item,id)=>{
                   return(
 
-                    <TouchableOpacity key={id} onPress={()=>handle(id)}>
-                          <View
-                                className={`rounded-2xl border  p-4 shadow-md justify-center items-center relative overflow-hidden gap-2 ${item.border} bg-white`}
-                                style={layoutStyle.home_card}
-                              >
-                                  <Image source={item.icon} className="w-12 h-12 mb-2" resizeMode="contain" />
-                                  <Text className={`text-base font-semibold tracking-wider ${item.textColor}`}>
-                                    {item.type}
-                                  </Text>
-
-                                    <View className={`h-40 w-40 ${item.bubbleColor} rounded-full absolute -top-10 -right-10 -z-10 bg-sk`} />
-                                    <View className={`h-20 w-20 ${item.bubbleColor} rounded-full absolute -bottom-5 -left-5 -z-10`} />
-                          </View>
+                    <TouchableOpacity key={id} onPress={() => handle(id)}>
+                      <View
+                        className={`rounded-2xl p-4 shadow-md justify-center items-center relative overflow-hidden gap-2  bg-white border border-border`}
+                        style={layoutStyle.home_card}
+                      >
+                        <Image source={item.icon} className="w-12 h-12 mb-2" resizeMode="contain" />
+                        <Text className={`text-base tracking-wider font-inter-semibold text-black`}>
+                          {item.type}
+                        </Text>
+                      </View>
                     </TouchableOpacity>
                   )
                 })
@@ -94,8 +81,8 @@ useLayoutEffect(() => {
 
        </View>
 
-       <View className="items-center h-10 bg-green-200 justify-center">
-          <Text className="font-bold text-center text-green-600">
+       <View className="items-center h-10 bg-primary justify-center">
+          <Text className="text-center text-white font-inter-medium">
             Designed and developed by Leadwinner.com
           </Text>
         </View>

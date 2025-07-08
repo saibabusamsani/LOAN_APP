@@ -6,7 +6,7 @@ const GradientButton=({ title, onPress })=>{
 
   const {colors}=useTheme();
   return (
-    <View className="rounded-md overflow-hidden self-start">
+    <View className="rounded-md overflow-hidden ">
       <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
         <LinearGradient
           colors={[colors.primary,colors.secondary]}
