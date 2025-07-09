@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Image, Text, StatusBar } from 'react-native';
+import { requestPermissions } from '../utils/PermissionHelper';
 
 const SplashScreen=()=>{
+
+   useEffect(() => {
+    const initApp = async () => {
+      const permissionGranted = await requestPermissions();
+
+      if (permissionGranted) {
+        console.log('Notification permission granted');
+      } else {
+        console.log('Notification permission denied');
+      }
+    };
+
+    initApp();
+  }, []);
+
   return (
     <View className="flex-1 items-center justify-center bg-green-500 relative">
       <StatusBar backgroundColor="rgb(50, 209, 93)" barStyle="light-content" />

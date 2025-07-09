@@ -17,6 +17,8 @@ const { height } = Dimensions.get('window');
 
 const ThemeModel = ({ visible, onDismiss }) => {
 
+  console.log("theme loaded");
+
    const themeColor = useSelector(s => s.theme.themeColor);
   const translateY = useRef(new Animated.Value(height)).current;
   const [showModal, setShowModal] = useState(visible);
@@ -100,6 +102,7 @@ const themeHandle = () => {
                 </RadioButton.Group>
 
                 <GradientButton title="Save Theme" onPress={themeHandle} />
+               
 
               </View>
             </Animated.View>

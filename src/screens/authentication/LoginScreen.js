@@ -8,15 +8,20 @@ import {
   StatusBar,
   StyleSheet,
 } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { Snackbar, useTheme } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import GradientButton from '../components/GradientButton';
+import GradientButton from '../../components/GradientButton';
 import { Dropdown } from 'react-native-element-dropdown';
-import { h } from '../styles/responsive';
+import { h } from '../../styles/responsive';
+import { checkForNetworkConnection } from '../../utils/NetworkConnectivityUtils';
+import { getMessaging, getToken } from '@react-native-firebase/messaging';
+import { setSP } from '../../utils/StorageHelper';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
   const { colors } = useTheme();
+  const navigation=useNavigation();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -24,10 +29,9 @@ const LoginScreen = () => {
     role: 'SHG',
     mobileNumber:"", 
   });
-
-  console.log("formData :",formData)
   const [secureText, setSecureText] = useState(true);
   const [errors, setErrors] = useState({});
+  const [openSnackBar,setOpenSnackBar]=useState(false);
 
  const roleOptions = [
     { label: 'SHG', value: 'SHG' },
@@ -45,7 +49,57 @@ const LoginScreen = () => {
     return Object.values(temp).every(x => x === '');
   };
 
-  const SFG_Login=()=>{
+
+
+  const getFcmToken=async ()=>{
+      
+    if(await checkForNetworkConnection())
+    {
+         const regId =await getToken(getMessaging());
+         if(regId!==null)
+          {
+            await setSP("FCM TOKEN",regId);
+            console.log('FCM Token:', regId);
+         }
+         else{
+            console.log("FCM TOKEN ","NULL ")
+         };
+         return true;
+    }
+    setOpenSnackBar(true);
+    return false;
+
+  }
+
+  const handleLogin = async () => {
+
+    if (!await getFcmToken()) return "";
+
+    // API CALL
+    try {
+      const loginDetails = { name: "sai", Id: 5 };
+      await setSP("pref_login_details", JSON.stringify(loginDetails));
+      console.log("login success", JSON.stringify(loginDetails));
+    } catch (error) {
+      console.log("Login error:", error);
+    }
+
+  }
+
+  const handleContinue = async () => {
+   if(!await getFcmToken()) return "";
+
+    navigation.navigate("OtpVerification");
+    console.log("mobile login triggered");
+  }
+
+  const handleTryAgain=()=>{
+
+    setOpenSnackBar(false);
+    console.log("try again triggered");
+  }
+
+    const SFG_Login=()=>{
     return (
       <View className='gap-4'>
         {/* Username */}
@@ -89,7 +143,7 @@ const LoginScreen = () => {
 
         {/* Submit */}
         <View className='self-center'>
-          <GradientButton title="Submit" onPress={validate} />
+          <GradientButton title="Login" onPress={handleLogin} />
         </View>
       </View>
     )
@@ -109,14 +163,16 @@ const LoginScreen = () => {
             />
           </View>
           <View className='self-center'>
-            <GradientButton title="CONTINUE"/>
+            <GradientButton title="CONTINUE" onPress={handleContinue}/>
           </View>
           {errors.username && (
             <Text className="text-red-500 text-sm mt-1">{errors.username}</Text>
           )}
         </View>
     )
-  }
+  };
+
+  
 
   return (
     <View className="flex-1 bg-primary justify-center gap-5 items-center">
@@ -125,7 +181,7 @@ const LoginScreen = () => {
       {/* Logo Section */}
       <View className="justify-center items-center px-4">
         <Image
-          source={require('../assets/jeevika-logo.png')}
+          source={require('../../assets/jeevika-logo.png')}
           className="w-24 h-24 mb-3 rounded-full border-2 border-white"
           resizeMode="contain"
         />
@@ -155,6 +211,17 @@ const LoginScreen = () => {
           formData.role === "SHG" ? <SFG_Login /> : <OFFICER_Login />
         }
       </View>
+
+       <Snackbar
+        visible={openSnackBar}
+        onDismiss={()=>setOpenSnackBar(!openSnackBar)}
+        action={{
+          label: 'try again',
+          onPress:handleTryAgain
+        }}>
+          <Text className='font-inter text-white'>Please check your network connection</Text>
+        
+      </Snackbar>
     </View>
   );
 };
