@@ -27,6 +27,7 @@
     "react-native": "0.79.2",
     "react-native-css-interop": "^0.1.22",
     "react-native-css-transformer": "^2.0.0",
+    "react-native-dropdown-select-list": "^2.0.5",
     "react-native-element-dropdown": "^2.12.4",
     "react-native-gesture-handler": "^2.25.0",
     "react-native-linear-gradient": "^2.8.3",

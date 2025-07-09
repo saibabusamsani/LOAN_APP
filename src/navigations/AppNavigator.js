@@ -28,7 +28,7 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-           {1 ? (
+           {isLoggedIn? (
           <Stack.Screen name="Main" component={DrawerNavigator} />
         ) : (
           <Stack.Screen name="Auth" component={LoginScreen} />

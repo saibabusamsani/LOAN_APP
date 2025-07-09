@@ -1,76 +1,182 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StatusBar, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  StatusBar,
+  StyleSheet,
+} from 'react-native';
+import { useTheme } from 'react-native-paper';
+import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import GradientButton from '../components/GradientButton';
+import { Dropdown } from 'react-native-element-dropdown';
+import { h } from '../styles/responsive';
 
+const LoginScreen = () => {
+  const { colors } = useTheme();
 
-export default function LoginScreen() {
-  const [formData, setFormData] = useState({ mobile: '', role: null });
-  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    role: 'SHG',
+    mobileNumber:"", 
+  });
 
-  const roles = [
-    { label: 'VOA', value: 'VOA' },
-    { label: 'MS', value: 'MS' },
-    { label: 'CC', value: 'CC' },
+  console.log("formData :",formData)
+  const [secureText, setSecureText] = useState(true);
+  const [errors, setErrors] = useState({});
+
+ const roleOptions = [
+    { label: 'SHG', value: 'SHG' },
+    { label: 'OFFICER', value: 'OFFICER' },
   ];
-
-  const handleGetOtp = () => {
-    const mobileRegex = /^[0-9]{10}$/;
-
-    if (!mobileRegex.test(formData.mobile)) {
-      setError('Please enter a valid 10-digit mobile number');
-      return;
-    }
-
-    if (!formData.role) {
-      Alert.alert('Error', 'Please select a role');
-      return;
-    }
-
-    setError('');
-    Alert.alert('OTP Sent', `OTP will be sent to ${formData.mobile} with role ${formData.role}`);
+  const handleChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  return (
-    <View className="flex-1 bg-[#800080]">
-      <StatusBar barStyle="light-content" backgroundColor="#800080" />
+  const validate = () => {
+    let temp = {};
+    temp.username = formData.username ? '' : 'Username is required';
+    temp.password = formData.password ? '' : 'Password is required';
+    setErrors(temp);
+    return Object.values(temp).every(x => x === '');
+  };
 
-      <View className="flex-1 justify-center items-center px-6">
+  const SFG_Login=()=>{
+    return (
+      <View className='gap-4'>
+        {/* Username */}
+        <View>
+          <View className="flex-row items-center border border-primary rounded-lg px-3 bg-white" style={styles.inputBox}>
+            <Feather name="user" size={20} color="gray" />
+            <TextInput
+              placeholder="Username"
+              placeholderTextColor="#888"
+              className="flex-1 text-black ml-2"
+              value={formData.username}
+              onChangeText={text => handleChange('username', text)}
+            />
+          </View>
+          {errors.username && (
+            <Text className="text-red-500 text-sm mt-1">{errors.username}</Text>
+          )}
+        </View>
+
+        {/* Password */}
+        <View>
+          <View className="flex-row items-center border border-primary rounded-lg px-3 py-2 bg-white" style={styles.inputBox}>
+            <MaterialIcons name="lock-outline" size={20} color="gray" />
+            <TextInput
+              placeholder="Password"
+              placeholderTextColor="#888"
+              className="flex-1 text-black ml-2 py-0 font-inter"
+
+              secureTextEntry={secureText}
+              value={formData.password}
+              onChangeText={text => handleChange('password', text)}
+            />
+            <TouchableOpacity onPress={() => setSecureText(!secureText)}>
+              <Feather name={secureText ? 'eye-off' : 'eye'} size={20} color="gray" />
+            </TouchableOpacity>
+          </View>
+          {errors.password && (
+            <Text className="text-red-500 text-sm mt-1">{errors.password}</Text>
+          )}
+        </View>
+
+        {/* Submit */}
+        <View className='self-center'>
+          <GradientButton title="Submit" onPress={validate} />
+        </View>
+      </View>
+    )
+  }
+
+  const OFFICER_Login=()=>{
+    return(
+         <View className='gap-4'>
+          <View className="flex-row items-center border border-primary rounded-lg px-3 bg-white" style={styles.inputBox}>
+            <Feather name="phone" size={20} color="gray" />
+            <TextInput
+              placeholder="Mobile Number"
+              placeholderTextColor="#888"
+              className="flex-1 text-black ml-2"
+              value={formData.username}
+              onChangeText={text => handleChange('username', text)}
+            />
+          </View>
+          <View className='self-center'>
+            <GradientButton title="CONTINUE"/>
+          </View>
+          {errors.username && (
+            <Text className="text-red-500 text-sm mt-1">{errors.username}</Text>
+          )}
+        </View>
+    )
+  }
+
+  return (
+    <View className="flex-1 bg-primary justify-center gap-5 items-center">
+      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+
+      {/* Logo Section */}
+      <View className="justify-center items-center px-4">
         <Image
           source={require('../assets/jeevika-logo.png')}
           className="w-24 h-24 mb-3 rounded-full border-2 border-white"
           resizeMode="contain"
         />
+        <Text className="text-white text-xl font-inter-bold">JEEVIKA</Text>
+        <Text className="text-white text-sm text-center font-inter-semibold mt-1">
+          UNITING COMMUNITIES FOR SHARED PROGRESS{"\n"}Government of BIHAR
+        </Text>
+      </View>
 
-        <Text className="text-white text-xl font-bold">JEEVIKA</Text>
-        <Text className="text-white text-sm text-center font-semibold mt-1">
-          SOCIETY FOR ELIMINATION OF RURAL POVERTY{"\n"}Government of BIHAR
+      {/* Login Form */}
+      <View className="bg-white w-[90%] p-4 gap-5 rounded-md">
+        <Text className="text-center font-inter-bold text-primary tracking-widest">
+          LOGIN
         </Text>
 
-        <View className="bg-white rounded-xl w-full mt-8 p-5 space-y-4 shadow-md">
-          <Text className="text-center text-black text-base font-semibold">LOGIN</Text>
-
-
-          <TextInput
-            placeholder="Enter Mobile No"
-            keyboardType="numeric"
-            maxLength={10}
-            value={formData.mobile}
-            onChangeText={text => setFormData(prev => ({ ...prev, mobile: text }))}
-            className="border border-purple-700 rounded px-4 py-2 text-black"
-            placeholderTextColor="#999"
-          />
-
-          {error ? (
-            <Text className="text-red-600 text-sm -mt-2">{error}</Text>
-          ) : null}
-
-          <TouchableOpacity
-            className="bg-purple-700 py-3 rounded mt-4"
-            onPress={handleGetOtp}
-          >
-            <Text className="text-center text-white font-semibold">GET OTP</Text>
-          </TouchableOpacity>
-        </View>
+        {/* Role Dropdown */}
+        <Dropdown
+        style={[styles.dropdown,{borderColor:colors.primary}]}
+        containerStyle={{ backgroundColor:colors.surface}}
+        data={roleOptions}
+        labelField="label"
+        valueField="value"
+        value={formData.role}
+        onChange={item=>handleChange("role",item.value)}
+      />
+        {
+          formData.role === "SHG" ? <SFG_Login /> : <OFFICER_Login />
+        }
       </View>
     </View>
   );
-}
+};
+
+export default LoginScreen;
+const styles = StyleSheet.create({
+  inputBox: {
+    height: h(6),
+    alignItems: 'center', 
+  },
+  inputText: {
+    height: '100%',
+    fontSize: 16,
+    paddingVertical: 0, 
+  },
+  dropdown: {
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    height:h(6)
+
+  }
+
+});
