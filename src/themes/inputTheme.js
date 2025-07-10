@@ -4,7 +4,6 @@ import { useTheme } from 'react-native-paper';
 export const InputTheme = () => {
   const { colors, roundness } = useTheme();
 
-  console.log('Theme colors:', colors); 
 
   return {
     roundness,

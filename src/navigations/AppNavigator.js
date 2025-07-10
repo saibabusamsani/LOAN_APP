@@ -18,7 +18,6 @@ const AppNavigator = () => {
   const {colors}=useTheme();
   const { isLoggedIn, isLoading } = useSelector(state => state.authentication);
 
-  console.log("isLoggedIn : ",isLoggedIn,"   --> isLoading : ",isLoading)
  
   useEffect(() => {
     const checkLoginStatus = async () => {

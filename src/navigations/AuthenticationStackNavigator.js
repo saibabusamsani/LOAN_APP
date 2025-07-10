@@ -11,8 +11,7 @@ const AuthenticationStackNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        // Apply default transition to all screens
-        cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS, // bottom to top
+        cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS, 
       }}
     >
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
