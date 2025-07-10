@@ -1,12 +1,17 @@
 import { View, Text, SafeAreaView, StatusBar, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Button, TextInput, useTheme } from 'react-native-paper'
+import {TextInput, useTheme } from 'react-native-paper'
 import { h } from '../../styles/responsive';
 import { setSP } from '../../utils/StorageHelper';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const OtpVerifcation = () => {
+
+  const dispatch=useDispatch();
+  const navigation=useNavigation();
 
 
 
@@ -18,6 +23,10 @@ const OtpVerifcation = () => {
       const loginDetails = { name: "sai", Id: 5 };
       await setSP("pref_login_details", JSON.stringify(loginDetails));
       console.log("login success", JSON.stringify(loginDetails));
+      navigation.navigate("SuccessScreen");
+     
+      
+
 
     } catch (error) {
       console.log("Login error:", error);

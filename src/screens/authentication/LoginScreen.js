@@ -18,10 +18,13 @@ import { checkForNetworkConnection } from '../../utils/NetworkConnectivityUtils'
 import { getMessaging, getToken } from '@react-native-firebase/messaging';
 import { setSP } from '../../utils/StorageHelper';
 import { useNavigation } from '@react-navigation/native';
+import { setLogin } from '../../store/AuthenticationSlice';
+import { useDispatch } from 'react-redux';
 
 const LoginScreen = () => {
   const { colors } = useTheme();
   const navigation=useNavigation();
+  const dispatch=useDispatch();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -80,6 +83,9 @@ const LoginScreen = () => {
       const loginDetails = { name: "sai", Id: 5 };
       await setSP("pref_login_details", JSON.stringify(loginDetails));
       console.log("login success", JSON.stringify(loginDetails));
+
+      
+      navigation.navigate("SuccessScreen");
     } catch (error) {
       console.log("Login error:", error);
     }

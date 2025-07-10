@@ -78,7 +78,7 @@ const handleThemeOpen = () => {
               APP SETTINGS
             </Text>
           </View>
-
+            {/* THEME */}
           <View className="p-4">
             <TouchableOpacity className="flex-row items-center gap-2" onPress={handleThemeOpen}>
               <MaterialIcons name="contrast" size={24} color="gray" />

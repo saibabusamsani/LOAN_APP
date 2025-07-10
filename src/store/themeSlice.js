@@ -25,4 +25,4 @@ export const applyTheme = (color) => async (dispatch) => {
 };
 
 export const { updateTheme } = themeSlice.actions;
-export default themeSlice.reducer;
+export const { reducer: themeReducer } = themeSlice;

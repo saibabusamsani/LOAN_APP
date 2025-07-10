@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
 import { View, Image, Text, StatusBar } from 'react-native';
 import { requestPermissions } from '../utils/PermissionHelper';
+import { useTheme } from 'react-native-paper';
 
 const SplashScreen=()=>{
+
+
+  const {colors}=useTheme();
 
    useEffect(() => {
     const initApp = async () => {
@@ -19,10 +23,10 @@ const SplashScreen=()=>{
   }, []);
 
   return (
-    <View className="flex-1 items-center justify-center bg-green-500 relative">
-      <StatusBar backgroundColor="rgb(50, 209, 93)" barStyle="light-content" />
+    <View className="flex-1 items-center justify-center relative">
+      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
       
-      <View className="absolute inset-0 bg-green-500 opacity-95" />
+      <View className="absolute inset-0 bg-primary opacity-95" />
 
       <Image
         source={require('../assets/jeevika-logo.png')}

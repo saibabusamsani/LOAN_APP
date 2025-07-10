@@ -1,15 +1,23 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets, CardStyleInterpolators } from '@react-navigation/stack';
 import LoginScreen from '../screens/authentication/LoginScreen';
 import OtpVerifcation from '../screens/authentication/OtpVerifcation';
+import SuccessScreen from '../screens/authentication/SuccessScreen';
 
 const Stack = createStackNavigator();
 
 const AuthenticationStackNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        // Apply default transition to all screens
+        cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS, // bottom to top
+      }}
+    >
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="OtpVerification" component={OtpVerifcation} />
+      <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
     </Stack.Navigator>
   );
 };

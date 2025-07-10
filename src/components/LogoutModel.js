@@ -14,6 +14,8 @@ import { IconButton, Portal,useTheme } from 'react-native-paper';
 import GradientButton from './GradientButton';
 import Feather from 'react-native-vector-icons/Feather';
 import { removeSP } from '../utils/StorageHelper';
+import { useDispatch } from 'react-redux';
+import { setLogout } from '../store/AuthenticationSlice';
 
 const { height } = Dimensions.get('window');
 
@@ -22,6 +24,7 @@ const LogoutModel = ({ visible, onDismiss }) => {
   const translateY = useRef(new Animated.Value(height)).current;
   const [showModal, setShowModal] = useState(visible);
   const {colors}=useTheme();
+  const dispatch=useDispatch();
 
 
 
@@ -47,6 +50,7 @@ const LogoutModel = ({ visible, onDismiss }) => {
 
   const logoutHandle=async ()=>{
     await removeSP("pref_login_details");
+    dispatch(setLogout());
     console.log("logout successfully")
   }
 
