@@ -5,13 +5,14 @@ import LoanSummaryNavigator from './LoanSummaryNavigator';
 import AppliedLoanListNavigator from './AppliedLoanListNavigator';
 import Header from '../components/Header';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
+import HomeHeader from '../components/HomeScreenHeader';
 
 const Stack = createStackNavigator();
 
 export default function HomeStackNavigator() {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="HomeScreen" component={HomeScreen}  />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{header:()=><HomeHeader/>,headerShown:true}} />
       <Stack.Screen name="LoanApply" component={LoanApply}   options={{ cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,header:()=><Header/>,headerShown:true}}/>
       <Stack.Screen name="AppliedLoansListNavigator" component={AppliedLoanListNavigator}  />
       <Stack.Screen name="LoanSummary" component={LoanSummaryNavigator} />

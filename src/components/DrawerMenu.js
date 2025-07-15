@@ -1,18 +1,19 @@
 import React, { Suspense, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { DrawerActions} from '@react-navigation/native';
 import ThemeModel from './ThemeModel';
 import LogoutModel from './LogoutModel';
+import { DrawerItem } from '@react-navigation/drawer';
 
-const DrawerMenu = () => {
+const DrawerMenu = ({navigation,state}) => {
   const insets = useSafeAreaInsets();
   const { colors } = useTheme();
-  const navigation = useNavigation();
+
 
   const [uiState, setUiState] = useState({
     openThemeModel: false,
@@ -52,6 +53,10 @@ const handleThemeOpen = () => {
     }
   };
 
+  const handleNavigate=(route)=>{
+      navigation.navigate(route);
+  }
+
   return (
     <>
       <LinearGradient
@@ -67,12 +72,58 @@ const handleThemeOpen = () => {
         }}
       >
         {/* PROFILE INFORMATION */}
-        <View className="flex-[2] justify-center items-center">
+        <View className="h-[15%] justify-center items-center border-b">
           <Text className="font-bold">Profile Data</Text>
         </View>
 
+        <ScrollView className='h-[20%] gap-2 py-2' showsVerticalScrollIndicator={false}>
+          
+          <DrawerItem
+            label="Home"
+            icon={({ color, size }) => (
+              <Feather name="home" size={size} color={color} />
+            )}
+            style={{
+              borderRadius: 10,
+              marginHorizontal: 8,
+            }}
+            labelStyle={{
+              fontSize: 16,
+              fontWeight: '500',
+              color: 'gray',
+            }}
+            focused={state?.routeNames[state?.index] === 'Home'}
+            onPress={() => {
+              navigation.navigate('Home');
+            
+            }}
+          />
+          <DrawerItem
+            label="Inception"
+            icon={({ color, size }) => (
+              <Feather name="list" size={size} color={color} />
+            )}
+            style={{
+              borderRadius: 10,
+              marginHorizontal: 8,
+            }}
+            labelStyle={{
+              fontSize: 16,
+              fontWeight: '500',
+              color: 'gray',
+            }}
+            focused={state?.routeNames[state?.index] === 'InceptionNavigator'}
+            onPress={() => {
+              navigation.navigate('InceptionNavigator');
+            
+            }}
+          />
+
+
+        </ScrollView>
+
         {/* APP SETTINGS */}
-        <View className="flex-[5] border-t border-b border-gray-400">
+        <View className="h-[20%] border-t border-b border-gray-400">
           <View className="border-b border-y-gray-500 p-3">
             <Text className="text-gray-500 text-md font-inter-medium tracking-wide">
               APP SETTINGS
@@ -90,7 +141,7 @@ const handleThemeOpen = () => {
         </View>
 
         {/* LOGOUT */}
-        <View className="flex-[1] justify-center items-center">
+        <View className="h-[10%] justify-center items-center">
           <TouchableOpacity className="flex-row items-center gap-2" onPress={handleLogoutOpen}>
             <Feather name="log-out" size={20} color="gray" />
             <Text className="text-text-third text-md font-inter-medium">Logout</Text>

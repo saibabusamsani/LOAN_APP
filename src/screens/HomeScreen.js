@@ -1,7 +1,6 @@
 import { View, Text, Image, StatusBar, TouchableOpacity } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native';
-import HomeScreenHeader from '../components/HomeScreenHeader';
 import { layoutStyle } from '../styles/layout';
 import { useTheme } from 'react-native-paper';
 
@@ -46,13 +45,6 @@ const handle=(id)=>{
 
 }
 
-
-useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      header: () => <HomeScreenHeader />,
-    });
-  }, [navigation]);
 
   return (
     <View className='flex-1 bg-background'>

@@ -4,6 +4,7 @@ import HomeStackNavigator from './HomeStackNavigator';
 import DrawerMenu from '../components/DrawerMenu';
 import { w } from '../styles/responsive';
 import { useTheme } from 'react-native-paper';
+import InceptionNavigator from './InceptionNavigator';
 
 const Drawer = createDrawerNavigator();
 
@@ -13,10 +14,11 @@ export default function DrawerNavigator() {
   return (
     <Drawer.Navigator 
       initialRouteName="Home"   
-      screenOptions={{ headerShown: false ,drawerStyle:{width:w(60),backgroundColor:"transparent"}}} 
+      screenOptions={{ headerShown:false,drawerStyle:{width:w(60),backgroundColor:"transparent"}}} 
       drawerContent={props => <DrawerMenu {...props} />}>
 
       <Drawer.Screen name="Home" component={HomeStackNavigator} />
+      <Drawer.Screen name="InceptionNavigator" component={InceptionNavigator}/>
 
     </Drawer.Navigator>
 
