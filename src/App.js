@@ -4,17 +4,20 @@ import AppNavigator from './navigations/AppNavigator';
 import { Provider } from 'react-redux';
 import store from './store/Store';
 import ThemeManager from './components/ThemeManager';
+import { DatabaseProvider } from '@nozbe/watermelondb/react';
+import { database } from './database/index';
 
 
 
-export default function App() {
+const App=()=>{
   return (
     <Provider store={store}>
-      <ThemeManager>
-          <AppNavigator/>
-      </ThemeManager>
+      <DatabaseProvider database={database}>
+          <ThemeManager>
+              <AppNavigator/>
+          </ThemeManager>
+      </DatabaseProvider>
     </Provider>
   )
-  
-  
 }
+export default App;

@@ -1,11 +1,12 @@
 import React from 'react';
-import { withObservables } from '@nozbe/watermelondb/react';
+import { useDatabase, withObservables } from '@nozbe/watermelondb/react';
 import { Q } from '@nozbe/watermelondb';
-import { database } from '../index';
 import InceptionDraftList from '../../components/InceptionDraftList';
 
 
 const LiveInceptionDraftList = ({ search }) => {
+
+  const database=useDatabase();
 
   const EnhancedList = React.useMemo(() => {
     return withObservables(['search'], ({ search }) => {
