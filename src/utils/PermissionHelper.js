@@ -1,6 +1,6 @@
 import { PermissionsAndroid, Platform } from 'react-native';
 
-const requestPermissions = async () => {
+const notificationPermission = async () => {
   if (Platform.OS === 'android' && Platform.Version >= 33) {
     try {
       const result = await PermissionsAndroid.request(
@@ -16,4 +16,4 @@ const requestPermissions = async () => {
   return true;
 };
 
-export {requestPermissions}
+export {notificationPermission}

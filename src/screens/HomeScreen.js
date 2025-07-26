@@ -1,8 +1,9 @@
 import { View, Text, Image, StatusBar, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { layoutStyle } from '../styles/layout';
 import { useTheme } from 'react-native-paper';
+import { notificationPermission } from '../utils/PermissionHelper';
 
 const HomeScreen = () => {
 
@@ -43,7 +44,21 @@ const handle=(id)=>{
   };
    navigation.navigate(route);
 
-}
+};
+
+   useEffect(() => {
+    const checkNotificationPermission = async () => {
+      const permissionGranted = await notificationPermission();
+
+      if (permissionGranted) {
+        console.log('Notification permission granted');
+      } else {
+        console.log('Notification permission denied');
+      }
+    };
+
+    checkNotificationPermission();
+  }, []);
 
 
   return (

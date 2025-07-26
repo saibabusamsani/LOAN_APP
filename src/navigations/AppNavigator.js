@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLogin, setLogout } from '../store/AuthenticationSlice';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'react-native-paper';
-
+import RNBootSplash from "react-native-bootsplash";
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
@@ -32,9 +32,13 @@ const AppNavigator = () => {
     checkLoginStatus();
   }, [dispatch]);
 
-  if (isLoading) {
-    return <SplashScreen />;
+  useEffect(() => {
+  if (!isLoading) {
+    RNBootSplash.hide({ fade: true });
   }
+}, [isLoading]);
+
+  
 
   return (
     <>
