@@ -63,8 +63,6 @@ const handle=(id)=>{
 
   return (
     <View className='flex-1 bg-background'>
-       <StatusBar barStyle="light-content" backgroundColor={colors.primary}/>
-
     
        <View className='justify-center items-center gap-5 flex-1'>
               {

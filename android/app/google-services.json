@@ -45,6 +45,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:192888782552:android:c7ceff03d92a3dd613e1ad",
+        "android_client_info": {
+          "package_name": "com.lwc.jeevika"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6zGji3WsUh7HAkXQUOAyzxEddN-I0PYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:192888782552:android:cffb3dc32adefbf213e1ad",
         "android_client_info": {
           "package_name": "com.lwc.reach"
@@ -66,7 +85,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:192888782552:android:6d7e7505e193453313e1ad",
         "android_client_info": {
-          "package_name": "com.lwc.reachcrm"
+          "package_name": "com.lwc.jeevika"
         }
       },
       "oauth_client": [],

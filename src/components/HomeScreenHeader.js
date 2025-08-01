@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { IconButton, MD3Colors, useTheme } from 'react-native-paper';
+import { IconButton,useTheme } from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 const HomeHeader = () => {
@@ -16,10 +15,7 @@ const HomeHeader = () => {
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
     >
-      <SafeAreaView
-        edges={['top']}
-        className="flex-row items-center justify-between px-3 py-1"
-      >
+      <View className="flex-row items-center justify-between px-3 py-1">
 
         <IconButton
           icon="menu"
@@ -50,7 +46,7 @@ const HomeHeader = () => {
           onPress={() => console.log('Profile Pressed')}
         />
 
-      </SafeAreaView>
+      </View>
     </LinearGradient>
   );
 };

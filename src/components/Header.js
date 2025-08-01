@@ -15,7 +15,7 @@ const Header = () => {
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
     >
-      <SafeAreaView
+      <View
         edges={['top']}
         className="flex-row items-center justify-between px-2 py-2"
       >
@@ -44,7 +44,7 @@ const Header = () => {
           </View>
         </View>
 
-      </SafeAreaView>
+      </View>
     </LinearGradient>
   );
 };

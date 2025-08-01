@@ -7,6 +7,7 @@ import { setLogin } from '../../store/AuthenticationSlice';
 const SuccessScreen = () => {
   const scaleAnim = useRef(new Animated.Value(0.8)).current;
   const dispatch=useDispatch();
+  const navigation=useNavigation();
 
   useEffect(() => {
     Animated.loop(
@@ -27,6 +28,7 @@ const SuccessScreen = () => {
 
   const handleContinue=()=>{
     dispatch(setLogin());
+    navigation.reset({index: 0,routes: [{ name: 'MainActivity' }]});
   }
 
   return (

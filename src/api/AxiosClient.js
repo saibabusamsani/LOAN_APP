@@ -1,5 +1,6 @@
 import axios from 'axios';
-export const backendURL ='https://coworkerzone.in/devbe/';
+import Toast from 'react-native-toast-message';
+export const backendURL ='https://coworkerzone.in/uatbe/';
 
 const apiService = axios.create({
   baseURL : backendURL + 'mobile/',
@@ -9,51 +10,47 @@ const apiService = axios.create({
 
 });
 
-// apiService.interceptors.request.use(
-//   async (config) => {
+apiService.interceptors.request.use(
+  async (config) => {
     
-//    const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
-//     if (isLoggedIn == 1) {
-//       const loginInfoo = await AsyncStorage.getItem('loginInfo');
-//       const loginInfo = JSON.parse(loginInfoo);
-//       const kioskId = await AsyncStorage.getItem('kioskId');
+      // const loginInfoo = await AsyncStorage.getItem('loginInfo');
+     
+    // if (loginInfoo != null) {
+    //   config.headers['employeeDesignationId'] = ulbList.employeeDesignationId;
+    // }
+    return config;
+  },
+  (error) => {
 
-//       if (loginInfo && loginInfo != null) {
-//         // Add headers from loginInfo
-//         const ulbList = loginInfo.ulbList[0]
-//         if (ulbList) {
-//         //  Add headers from loginInfo
-//           config.headers['employeeDesignationId'] = ulbList.employeeDesignationId;
-//           config.headers['employeeId'] = ulbList.employeeId;
-//           config.headers['adminId'] = ulbList.adminId;
-//           config.headers['designationId'] = String(ulbList.designationId);
-//           config.headers['kioskId'] = kioskId;
-//         }
-//      }
+    return Promise.reject(error);
+  }
+);
 
-//    }
-//     return config;
-//   },
-//   (error) => {
+apiService.interceptors.response.use(
+  response => response,
+  error => {
+    const status = error?.response?.status;
+    let message = 'Something went wrong';
 
-//     return Promise.reject(error);
-//   }
-// );
+    if (status === 403) {
+      message = 'Access denied (403)';
+    } else if (status === 404) {
+      message = 'Resource not found (404)';
+    } else if (status === 500) {
+      message = 'Internal server error (500)';
+    } else if (error.message === 'Network Error') {
+      message = 'Please check your internet connection.';
+    }
 
-// // Add a response interceptor
-// apiService.interceptors.response.use(
-//   function (response) {
-//     if (response) return response;
-//     else {
-//       var message = 'We had trouble connecting to the server';
-//       if (response.data.message) message = response.data.message;
-//       return Promise.reject(response);
-//     }
-//   },
-//   function (error) {
-//     return Promise.reject(error);
-//   },
+    Toast.show({
+      type: 'error',
+      text1: 'Error',
+      text2: message,
+      position: 'bottom',
+    });
 
-// );
-
+    return Promise.reject(error);
+  }
+)
+ 
 export default apiService;

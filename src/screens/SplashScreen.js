@@ -1,26 +1,44 @@
 import React, { useEffect } from 'react';
 import { View, Image, Text, StatusBar } from 'react-native';
-import { requestPermissions } from '../utils/PermissionHelper';
 import { useTheme } from 'react-native-paper';
+import { getSP } from '../utils/StorageHelper';
+import { useDispatch } from 'react-redux';
+import { setLogin, setLogout } from '../store/AuthenticationSlice';
+import RNBootSplash from "react-native-bootsplash";
+import { useNavigation } from '@react-navigation/native';
 
 const SplashScreen=()=>{
 
 
   const {colors}=useTheme();
+  const dispatch=useDispatch();
+  const navigation=useNavigation();
 
-   useEffect(() => {
-    const initApp = async () => {
-      const permissionGranted = await requestPermissions();
+ useEffect(() => {
+  const initApp = async () => {
+    const startTime = Date.now();
+    const loginDetails = await getSP('pref_login_details');
 
-      if (permissionGranted) {
-        console.log('Notification permission granted');
-      } else {
-        console.log('Notification permission denied');
-      }
-    };
+    const elapsed = Date.now() - startTime;
+    const minSplashTime = 2000; 
+    
+    if (elapsed < minSplashTime) {
+      await new Promise(resolve => setTimeout(resolve, minSplashTime - elapsed));
+    }
+    if (loginDetails) {
+      dispatch(setLogin());
+      navigation.reset({ index: 0, routes: [{ name: 'MainActivity' }] });
+    } else {
+      dispatch(setLogout());
+      navigation.reset({ index: 0, routes: [{ name: 'Authentication' }] });
+    }
 
-    initApp();
-  }, []);
+    RNBootSplash.hide({ fade: true });
+  };
+
+  initApp();
+}, []);
+
 
   return (
     <View className="flex-1 items-center justify-center relative">

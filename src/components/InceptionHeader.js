@@ -16,10 +16,7 @@ const InceptionHeader = () => {
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
     >
-      <SafeAreaView
-        edges={['top']}
-        className="flex-row items-center justify-between px-3 py-1"
-      >
+      <View className="flex-row items-center justify-between px-3 py-1">
 
 
         <View className='flex-row justify-center items-center'>
@@ -41,7 +38,7 @@ const InceptionHeader = () => {
           onPress={() => navigation.navigate("FieldReport")}
         />
 
-      </SafeAreaView>
+      </View>
     </LinearGradient>
   );
 };

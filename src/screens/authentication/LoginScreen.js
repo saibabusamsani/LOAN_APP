@@ -20,6 +20,7 @@ import { setSP } from '../../utils/StorageHelper';
 import { useNavigation } from '@react-navigation/native';
 import { setLogin } from '../../store/AuthenticationSlice';
 import { useDispatch } from 'react-redux';
+import { loginUser } from '../../api/ApiService';
 
 const LoginScreen = () => {
   const { colors } = useTheme();
@@ -82,8 +83,8 @@ const LoginScreen = () => {
     try {
       const loginDetails = { name: "sai", Id: 5 };
       await setSP("pref_login_details", JSON.stringify(loginDetails));
+     await  loginUser({username:"superadmin",password:"superadmin"})
       console.log("login success", JSON.stringify(loginDetails));
-
       
       navigation.navigate("SuccessScreen");
     } catch (error) {
